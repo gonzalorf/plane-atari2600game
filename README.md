@@ -1,1 +1,1 @@
-# plane-atari2600game
+# Plane: an Atari 2600 game
