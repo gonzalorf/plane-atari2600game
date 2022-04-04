@@ -1,26 +1,26 @@
 ** La arquitectura 6502
 
-El 6502 es un microprocesador de 8 bits que sigue la filosofÌa de diseÒo 
-orientado a memoria del Motorola 6800. El 6502 apareciÛ en 1975, ganando 
-popularidad por su bajo precio y convirtiÈndose en el corazÛn de las 
+El 6502 es un microprocesador de 8 bits que sigue la filosof√≠a de dise√±o 
+orientado a memoria del Motorola 6800. El 6502 apareci√≥ en 1975, ganando 
+popularidad por su bajo precio y convirti√©ndose en el coraz√≥n de las 
 primeras computadoras personales como Apple II, Comodore 64 y ATARI 400 y 
 800.
 
 
 ** La simplicidad es la clave
 
-El 6502 maneja la informaciÛn a travÈs de sus registros, los cuales 
+El 6502 maneja la informaci√≥n a trav√©s de sus registros, los cuales 
 pueden contener 1 byte (8 bits) de datos. Hay tres registros de uso 
 general y dos de uso especial:
 
-Acumulador A:	maneja toda la aritmÈtica y la lÛgica. Es el verdadero 
-corazÛn del chip.
+Acumulador A:	maneja toda la aritm√©tica y la l√≥gica. Es el verdadero 
+coraz√≥n del chip.
 
-Registros X e Y:	son registros de propÛsitos generales y con limitadas 
+Registros X e Y:	son registros de prop√≥sitos generales y con limitadas 
 capacidades.
 
-S:	Stack Pointer, putero al Stack Memory (PorciÛn de 
-memoria que act˙a como una pila de datos)
+S:	Stack Pointer, putero al Stack Memory (Porci√≥n de 
+memoria que act√∫a como una pila de datos)
 
 P:	Processor Status. Mantiene el estado de las banderas y 
 las pruebas del microprocesador.
@@ -28,11 +28,11 @@ las pruebas del microprocesador.
 
 * Stack Pointer
 
-Cuando el microprocesador ejecuta una instrucciÛn  JSR (ir a subrutina), 
-necesita saber dÛnde retornar cuando Èsta finalice. Esta informaciÛn se 
-encuentra en la porciÛn baja de memoria desde $0100 hasta $01FF y el 
+Cuando el microprocesador ejecuta una instrucci√≥n  JSR (ir a subrutina), 
+necesita saber d√≥nde retornar cuando √©sta finalice. Esta informaci√≥n se 
+encuentra en la porci√≥n baja de memoria desde $0100 hasta $01FF y el 
 stack pointer se utiliza como un offset. El stack se va llenando desde 
-$10FF hacia abajo y permite una acumulaciÛn de subrutinas de hasta 128 
+$10FF hacia abajo y permite una acumulaci√≥n de subrutinas de hasta 128 
 niveles. En casi todos los casos no representa un problema.
 
 
@@ -46,51 +46,51 @@ bit ->  7                           0
 | N | V |   | B | D | I | Z | C | <-- banderas, 0/1 = reset/set 
 +---+---+---+---+---+---+---+---+ 
 
-N  =  NEGATIVO. Se setea cuando el bit 7 del acumulador est· en 1.
+N  =  NEGATIVO. Se setea cuando el bit 7 del acumulador est√° en 1.
 
-V  =  OVERFLOW. Se setea cuando la suma de dos n˙meros con signo o la 
-resta de dos n˙meros sin signo producen un resultado mayor a +127 o menor 
-a ñ128.
+V  =  OVERFLOW. Se setea cuando la suma de dos n√∫meros con signo o la 
+resta de dos n√∫meros sin signo producen un resultado mayor a +127 o menor 
+a ‚Äì128.
  
-B  =  COMANDO BRK. Se setea en cuando hay una interrupciÛn causada por el 
-comando BRK (corte) y se resetea si fue causada por una interrupciÛn 
+B  =  COMANDO BRK. Se setea en cuando hay una interrupci√≥n causada por el 
+comando BRK (corte) y se resetea si fue causada por una interrupci√≥n 
 externa.
              
 D  =  MODO DECIMAL. Se setea al activar el modo decimal.
        
 I  =  DESACTIVACION DE IRQ. Se setea si las interrupciones enmascarables 
-(maskables) est·n desactivadas.
+(maskables) est√°n desactivadas.
              
-Z  =  CERO. Se setea si el resultado de la ˙ltima operaciÛn 
+Z  =  CERO. Se setea si el resultado de la √∫ltima operaci√≥n 
 (load/inc/dec/add/sub) fue cero.
              
 C  =  CARRY. Se setea si una suma produce acarreo, o si una resta 
-necesita un bit de la izquierda. TambiÈn mantiene bits luego de una 
-operaciÛn shift (rol/ror/asl/lsr).
+necesita un bit de la izquierda. Tambi√©n mantiene bits luego de una 
+operaci√≥n shift (rol/ror/asl/lsr).
              
              
 * Acumulador
   ----------
 
 Casi todas las operaciones del acumulador utilizan el registro 
-acumulador. Todas las sumas y restas se hacen con este registro. TambiÈn 
-maneja la mayor parte de las operaciones de comparaciÛn (es A > B ?) y de 
-desplazamiento lÛgico de bits.
+acumulador. Todas las sumas y restas se hacen con este registro. Tambi√©n 
+maneja la mayor parte de las operaciones de comparaci√≥n (es A > B ?) y de 
+desplazamiento l√≥gico de bits.
    
    
 * Registros X e Y
   ---------------
    
-Son registros Ìndices generalmente usados como offsets a direcciones de 
-memoria. TambiÈn sirven para contener valores y su importancia radica en 
+Son registros √≠ndices generalmente usados como offsets a direcciones de 
+memoria. Tambi√©n sirven para contener valores y su importancia radica en 
 los modos de direccionamiento que pueden emplear.
    
    
 * Modos de Direccionamiento
   -------------------------
 
-El 6502 tiene 13 modos de direccionamiento o vÌas de acceso a memoria.  
-El 65C02 tiene dos modos m·s.
+El 6502 tiene 13 modos de direccionamiento o v√≠as de acceso a memoria.  
+El 65C02 tiene dos modos m√°s.
 
    
 +---------------------+--------------------------+
@@ -100,14 +100,14 @@ El 65C02 tiene dos modos m·s.
 | Absolute            |          aaaa            |
 | Zero Page           |          aa              |   Nota:
 | Implied             |                          |
-| Indirect Absolute   |          (aaaa)          |     aa = 2 dÌgitos 
+| Indirect Absolute   |          (aaaa)          |     aa = 2 d√≠gitos 
 | Absolute Indexed,X  |          aaaa,X          |     hexa como $FF
 | Absolute Indexed,Y  |          aaaa,Y          |
-| Zero Page Indexed,X |          aa,X            |     aaaa = 4 dÌgitos
+| Zero Page Indexed,X |          aa,X            |     aaaa = 4 d√≠gitos
 | Zero Page Indexed,Y |          aa,Y            |     hexa como $FFFF
 | Indexed Indirect    |          (aa,X)          |          
 | Indirect Indexed    |          (aa),Y          |
-| Relative            |          aaaa            |     tambiÈn pueden ser
+| Relative            |          aaaa            |     tambi√©n pueden ser
 | Accumulator         |          A               |     etiquetas como 
 +---------------------+--------------------------+     var1, var2, etc.
       
@@ -117,7 +117,7 @@ El 65C02 tiene dos modos m·s.
   Immediate (Inmediato)
   ---------------------
    
-El valor dado es el que usar· inmediatamente la instrucciÛn. Por ejemplo, 
+El valor dado es el que usar√° inmediatamente la instrucci√≥n. Por ejemplo, 
 LDA #$99 carga el valor $99 en el acumulador.
    
    
@@ -125,28 +125,28 @@ LDA #$99 carga el valor $99 en el acumulador.
   -------------------
    
 El valor dado es la direccion de memoria (de 16 bits) que contiene el 
-valor de 8 bits que debe usar la instrucciÛn.  Por ejemplo, STA $3E32 
-almacena el valor que hay en el acumulador en la direcciÛn $3E32.
+valor de 8 bits que debe usar la instrucci√≥n.  Por ejemplo, STA $3E32 
+almacena el valor que hay en el acumulador en la direcci√≥n $3E32.
    
    
-  Zero Page (P·gina cero)
+  Zero Page (P√°gina cero)
   -----------------------
    
-Las primeras 256 direcciones de memoria ($0000-00FF) se dice que est·n en 
-la ìp·gina ceroî. Las siguientes 256 ($0100-01FF) est·n en p·gina 1, etc. 
-Las instrucciones que usan p·gina cero ahorran memoria ya que no utilizan 
-el $00 la parte superior (high) de la direcciÛn. Por ejemplo,
+Las primeras 256 direcciones de memoria ($0000-00FF) se dice que est√°n en 
+la ‚Äúp√°gina cero‚Äù. Las siguientes 256 ($0100-01FF) est√°n en p√°gina 1, etc. 
+Las instrucciones que usan p√°gina cero ahorran memoria ya que no utilizan 
+el $00 la parte superior (high) de la direcci√≥n. Por ejemplo,
    
       LDA $0023   -- funciona pero utiliza un byte extra
-      LDA $23     -- direcciÛn en p·gina cero
+      LDA $23     -- direcci√≥n en p√°gina cero
       
       
   Implied (Implicado)
   ------------------
    
 Hay instrucciones que solo ocupan un byte y no hacen referencia a 
-memoria. Se dice que estas instrucciones usan direcciÛn implicadao 
-t·cita. Por ejemplo,
+memoria. Se dice que estas instrucciones usan direcci√≥n implicadao 
+t√°cita. Por ejemplo,
    
       CLC  -- resetea el carry del processor status
       DEX  -- decrementa el registro X en 1
@@ -156,61 +156,61 @@ t·cita. Por ejemplo,
   Indirect Absolute (Absoluto Indirecto)
   --------------------------------------
    
-SÛlo es usado por la instrucciÛn JMP (JuMP - salto). Toma la direcciÛn 
-dada y la usa como un puntero a la parte inferior (low) de una direcciÛn 
-en memoria, luego hace que el programa salte a esa direcciÛn. Por 
+S√≥lo es usado por la instrucci√≥n JMP (JuMP - salto). Toma la direcci√≥n 
+dada y la usa como un puntero a la parte inferior (low) de una direcci√≥n 
+en memoria, luego hace que el programa salte a esa direcci√≥n. Por 
 ejemplo,
    
-      JMP ($2345)   ; salta a la direcciÛn cuya parte inferior es el 
+      JMP ($2345)   ; salta a la direcci√≥n cuya parte inferior es el 
 valor en $2345 y cuya parte superior es el valor en $2346
       
-O sea, si $2345 contiene $EA y $2346 contiene $12 entonces la prÛxima 
-instrucciÛn a ejecutar es la que se encentra en $12EA. El 6502 utiliza 
+O sea, si $2345 contiene $EA y $2346 contiene $12 entonces la pr√≥xima 
+instrucci√≥n a ejecutar es la que se encentra en $12EA. El 6502 utiliza 
 las direcciones en formato low/high (parte inferior/parte superior).
    
    
   Absolute Indexed (Absoluto Indexado)
   ------------------------------------
    
-La direcciÛn final se obtiene tomando la direcciÛn dada como base y 
+La direcci√≥n final se obtiene tomando la direcci√≥n dada como base y 
 sumando el valor contenido en el registro X o Y como offset. O sea,
    
       LDA $F453,X  ; suponiendo que X contiene un 3
       
-Carga el acumulador con el contenido de la direcciÛn $F453 + 3 = $F456.
+Carga el acumulador con el contenido de la direcci√≥n $F453 + 3 = $F456.
    
    
-  Zero Page Indexed (P·gina Cero Indexada)
+  Zero Page Indexed (P√°gina Cero Indexada)
   ----------------------------------------
    
-Es lo mismo que el anterior pero la direcciÛn dada est· en la p·gina 
+Es lo mismo que el anterior pero la direcci√≥n dada est√° en la p√°gina 
 cero, ahorrando un byte.
    
    
   Indexed Indirect (Indexado Indirecto)
   -------------------------------------
    
-La direcciÛn de 16 bits se encuentra comenzando por la direcciÛn dada m·s 
-el contenido del registro X. El valor es el contenido de esa direcciÛn.  
+La direcci√≥n de 16 bits se encuentra comenzando por la direcci√≥n dada m√°s 
+el contenido del registro X. El valor es el contenido de esa direcci√≥n.  
 Por ejemplo,
    
       LDA ($B4,X)  ; suponiendo que X contiene un 6
       
-Dada la direcciÛn $B4 + 6 = $BA. Si $BA y $BB contienen $12 y $EE 
-respectivamente, entonces la direcciÛn final es $EE12. El valor en $EE12 
+Dada la direcci√≥n $B4 + 6 = $BA. Si $BA y $BB contienen $12 y $EE 
+respectivamente, entonces la direcci√≥n final es $EE12. El valor en $EE12 
 es el que se carga en el acumulador.
    
    
   Indirect Indexed (Indirecto Indexado)
   -------------------------------------
    
-Se toma la direcciÛn de 16 bits contenida en la direcciÛn dada (y en la 
+Se toma la direcci√≥n de 16 bits contenida en la direcci√≥n dada (y en la 
 siguiente). Se suma el contenido del registro Y. Se toma el valor 
-almacenado en esta nueva direcciÛn. Por ejemplo,
+almacenado en esta nueva direcci√≥n. Por ejemplo,
    
       LDA ($B4),Y  ; suponiendo que Y contiene 6
       
-Si $B4 contiene $EE y $B5 contiene $12 entonces el valor en la direcciÛn 
+Si $B4 contiene $EE y $B5 contiene $12 entonces el valor en la direcci√≥n 
 $12EE + Y (6) = $12F4 es la que se almacena en el acumulador.
    
    
@@ -219,35 +219,35 @@ $12EE + Y (6) = $12F4 es la que se almacena en el acumulador.
   
 El direccionamiento relativo es usado por las instrucciones de salto del 
 6502. El byte dado se usa como un offset con signo a partir de la 
-direcciÛn actual y el resultado es la direcciÛn de la prÛxima instrucciÛn 
+direcci√≥n actual y el resultado es la direcci√≥n de la pr√≥xima instrucci√≥n 
 a ejecutar. Por ejemplo,
    
-      BNE $7F   (saltar si la bandera ìzeroî est· en reset)
+      BNE $7F   (saltar si la bandera ‚Äúzero‚Äù est√° en reset)
       
-aÒadir· 127 a la direcciÛn en que se encuentra el PC (program counter) en 
-ese momento (que es la direcciÛn donde est· la instrucciÛn BNE $7F) y 
-comienza la ejecuciÛn de la instrucciÛn contenida en esta nueva 
-direcciÛn. Similarmente,
+a√±adir√° 127 a la direcci√≥n en que se encuentra el PC (program counter) en 
+ese momento (que es la direcci√≥n donde est√° la instrucci√≥n BNE $7F) y 
+comienza la ejecuci√≥n de la instrucci√≥n contenida en esta nueva 
+direcci√≥n. Similarmente,
    
-      BEQ $F9   (saltar si la bandera ìzeroî est· en set)
+      BEQ $F9   (saltar si la bandera ‚Äúzero‚Äù est√° en set)
       
-aÒadir· -7 a la direcciÛn en que se encuentra el PC en ese momento y 
-comienza la ejecuciÛn de la instrucciÛn contenida en esta nueva 
-direcciÛn.
+a√±adir√° -7 a la direcci√≥n en que se encuentra el PC en ese momento y 
+comienza la ejecuci√≥n de la instrucci√≥n contenida en esta nueva 
+direcci√≥n.
    
-Recordemos que si tomamos el bit 7 (el m·s alto o high) de un byte como 
-el signo (0= positivo; 1= negativo) entonces es posible tener n˙meros en 
-el rango -128 ($80) a +127 (7F). Si el bit 7 est· seteado, o sea si el 
-n˙mero is > $7F, es un salto negativo (hacia atr·s en el programa). QuÈ 
+Recordemos que si tomamos el bit 7 (el m√°s alto o high) de un byte como 
+el signo (0= positivo; 1= negativo) entonces es posible tener n√∫meros en 
+el rango -128 ($80) a +127 (7F). Si el bit 7 est√° seteado, o sea si el 
+n√∫mero is > $7F, es un salto negativo (hacia atr√°s en el programa). Qu√© 
 tan lejos es el salto? Si el valor es < $80 (positivo), simplemente es 
 esa cantidad de bytes. Si el valor es > $7F (negativo) entonces es el 
-complemento de 2 del valor dado en la direcciÛn negativa.
+complemento de 2 del valor dado en la direcci√≥n negativa.
    
 
   Complemento de 2
   ----------------
       
-El complemento de 2 de un n˙mero se obtine intercambiando todos los bits 
+El complemento de 2 de un n√∫mero se obtine intercambiando todos los bits 
 de 0 -> 1 y de 1 -> 0, y luego sumando 1. Entonces,
       
       $FF  =  1111 1111   <-- original
@@ -256,28 +256,28 @@ de 0 -> 1 y de 1 -> 0, y luego sumando 1. Entonces,
               ---------
               0000 0001   <-- complemento de 2, por lo tanto $FF = -1
               
-Notar que QForth usa esto para n˙meros mayores a 32768 asÌ que 65535 = -1 
+Notar que QForth usa esto para n√∫meros mayores a 32768 as√≠ que 65535 = -1 
 y 32768 = -32768.
       
-En la pr·ctica, el programador utiliza una etiqueta y el ensamblador se 
-preocupa por los c·lculos. Notar que los saltos de programa solo pueden 
-ser a direcciones entre -128 y +127 bytes a partir de la direcciÛn 
-actual. El 6502 no permite saltos a una direcciÛn absoluta.
+En la pr√°ctica, el programador utiliza una etiqueta y el ensamblador se 
+preocupa por los c√°lculos. Notar que los saltos de programa solo pueden 
+ser a direcciones entre -128 y +127 bytes a partir de la direcci√≥n 
+actual. El 6502 no permite saltos a una direcci√≥n absoluta.
    
 
   Accumulator (Acumulador)
   ------------------------
    
-Como el direccionamiento implicado, el objeto de la instrucciÛn es el 
+Como el direccionamiento implicado, el objeto de la instrucci√≥n es el 
 acumulador y no necesita ser especificado.
    
    
 ** Conjunto de instrucciones del 6502
   ----------------------------------
 
-Hay 56 instrucciones en el 6502, y m·s en el 65C02. Muchas instrucciones 
-utilizan m·s de un modo de direccionamiento y cada combinaciÛn de modo 
-instrucciÛn/direccionamiento tiene un opcode particular hexadecimal que 
+Hay 56 instrucciones en el 6502, y m√°s en el 65C02. Muchas instrucciones 
+utilizan m√°s de un modo de direccionamiento y cada combinaci√≥n de modo 
+instrucci√≥n/direccionamiento tiene un opcode particular hexadecimal que 
 lo especifica exactamente. Entonces,
    
 	A9  =  LDA #$aa   Carga el acumulador en modo inmediato
@@ -285,7 +285,7 @@ lo especifica exactamente. Entonces,
 	etc.
    
    
-Algunas instrucciones utilizan lÛgica binaria. Estas son AND, OR y EOR 
+Algunas instrucciones utilizan l√≥gica binaria. Estas son AND, OR y EOR 
 (OR exclusivo). Las siguientes tablas muestran el efecto de estas 
 instrucciones:
    
@@ -311,12 +311,12 @@ Por lo tanto,  $FF AND $0F  =  $0F ya que,
 		---------
 		0000 1111  =  $0F
       
-AND es ˙til para enmascarar bits. Por ejemplo, para enmascarar el primer 
+AND es √∫til para enmascarar bits. Por ejemplo, para enmascarar el primer 
 nibble (4bits) de un valor AND con $0F:
    
 	$36 AND $0F  =  $06
       
-OR es ˙til para setear un bit en particular:
+OR es √∫til para setear un bit en particular:
    
 	$80 OR $08   =  $88
       
@@ -325,7 +325,7 @@ OR es ˙til para setear un bit en particular:
 	or	---------
 		1000 1000  ($88)
    
-EOR es ˙til para invertir bits:
+EOR es √∫til para invertir bits:
    
 	$AA EOR $FF  =  $55
       
@@ -340,22 +340,22 @@ multiplicar el valor por 2, y desplazarlo hacia la derecha equivale a
 dividirlo por 2.
    
 Podemos diferenciar 11 grupos de instrucciones del 6502 de acuerdo a su 
-funciÛn:
+funci√≥n:
    
-	Instrucciones de carga y acumulaciÛn
-	Instruciones aritmÈticas
-	Instruciones de incrementaciÛn y decrementaciÛn
-	Instruciones lÛgicas
-	Instruciones de salto, ramificaciÛn, comparaciÛn y test de bits
-	Instruciones de desplazamiento y rotaciÛn
+	Instrucciones de carga y acumulaci√≥n
+	Instruciones aritm√©ticas
+	Instruciones de incrementaci√≥n y decrementaci√≥n
+	Instruciones l√≥gicas
+	Instruciones de salto, ramificaci√≥n, comparaci√≥n y test de bits
+	Instruciones de desplazamiento y rotaci√≥n
 	Instruciones de transferencia
 	Instruciones propias del stack
 	Instruciones de subrutina
 	Instruciones de set/reset
-	Instruciones NOP/BRK (ninguna operaciÛn/corte)
+	Instruciones NOP/BRK (ninguna operaci√≥n/corte)
 
 
-* Instrucciones de carga y acumulaciÛn
+* Instrucciones de carga y acumulaci√≥n
   ------------------------------------
    
 	LDA  - LoaD the Accumulator (cargar acumulador)
@@ -366,12 +366,12 @@ funciÛn:
 	STX  - STore the X register  (almacenar en registro X)
 	STY  - STore the Y register  (almacenar en registro Y)
    
-Los microprocesadores gastan mucho de su tiempo en mover informaciÛn 
-dentro de la memoria. Los datos se cargan desde una direcciÛn a un 
-registro y luego se los almacena en una nueva direcciÛn, generalmente con 
-alg˙n proceso de suma o resta. El contenido de una direcciÛn puede ser 
+Los microprocesadores gastan mucho de su tiempo en mover informaci√≥n 
+dentro de la memoria. Los datos se cargan desde una direcci√≥n a un 
+registro y luego se los almacena en una nueva direcci√≥n, generalmente con 
+alg√∫n proceso de suma o resta. El contenido de una direcci√≥n puede ser 
 cargado directamente en el acumulador, en el registro X, y en el registro 
-Y pero el acumulador es el que tiene disponibles m·s modos de 
+Y pero el acumulador es el que tiene disponibles m√°s modos de 
 direccionamiento.
    
 Si el bit 7 (bit high) de un byte es 1 cuando se lo carga, entonces la 
@@ -379,7 +379,7 @@ bandera N del processor status se setea. Si el valor cargado es 0 se
 setea la bandera Z. 
    
    
-* Instruciones aritmÈticas
+* Instruciones aritm√©ticas
   ------------------------
    
 	ADC  -	ADd to accumulator with Carry 
@@ -390,13 +390,13 @@ setea la bandera Z.
 Carry es un bit del processor status que utilizan las operaciones que 
 requieren acarreo de bits (suma o resta) y por las de desplazamiento.
 
-El 6502 tiene dos modos aritmÈticos, el binario y el decimal. Tanto la 
+El 6502 tiene dos modos aritm√©ticos, el binario y el decimal. Tanto la 
 suma como la resta implementan el carry para manejar acarreo y pedido de 
-bits para simplificar la aritmÈtica multi-byte. Notar que en el caso de 
+bits para simplificar la aritm√©tica multi-byte. Notar que en el caso de 
 la resta es necesario setear el carry ya que debe usarse el opuesto del 
 carry cuando se resta (ver abajo).
    
-La suma deberÌa ser asÌ:
+La suma deber√≠a ser as√≠:
    
 	CLC
 	ADC ...    
@@ -408,12 +408,12 @@ La suma deberÌa ser asÌ:
 	.
    
 Limpiar el carry, luego realizar las sumas. El acarreo entre adiciones 
-ser· manejado por el carry. SimbÛlicamente es:
+ser√° manejado por el carry. Simb√≥licamente es:
    
 	A + M + C  ?  A	es decir,
 	Acumulador + Valor + Carry ? Acumulador
    
-La resta deberÌa ser asÌ:
+La resta deber√≠a ser as√≠:
    
 	SEC
 	SBC ...
@@ -425,7 +425,7 @@ La resta deberÌa ser asÌ:
 	.
    
 en este caso se setea el carry primero y luego se realizn las restas.  
-SimbÛlicamente es:
+Simb√≥licamente es:
    
    A - M - ~C  -->  A  ,  donde ~C es l opuesto a C
 
@@ -434,36 +434,36 @@ Ej.1
 	Una rutina de suma en 16 bit.  $20,$21 + $22,$23 = $24,$25
         
 	CLC         limpiar el carry
-	LDA $20     tomar el byte bajo (low) del primer n˙mero
+	LDA $20     tomar el byte bajo (low) del primer n√∫mero
 	ADC $22     sumarle el byte low del segundo
 	STA $24     almacenar el byte low del resultado
-	LDA $21     tomar el byte alto (high) del primer n˙mero
-	ADC $23     sumarle el byte high del segundo, m·s el carry
+	LDA $21     tomar el byte alto (high) del primer n√∫mero
+	ADC $23     sumarle el byte high del segundo, m√°s el carry
 	STA $25     almacenar el byte high del resultado
            
-	... si el resultado no ìcabeî en un n˙mero de 16 bit el carry 
-quedar· seteado.
+	... si el resultado no ‚Äúcabe‚Äù en un n√∫mero de 16 bit el carry 
+quedar√° seteado.
                
 Ej.2
 ----
 	Una rutina de resta en 16 bit.  $20,$21 - $22,$23 = $24,$25
 
 	SEC         setear el carry
-	LDA $20     tomar el byte low del primer n˙mero
+	LDA $20     tomar el byte low del primer n√∫mero
 	SBC $22     restarle el byte low del segundo
 	STA $24     almacenar el byte low del resultado
-	LDA $21     tomar el byte high del primer n˙mero
+	LDA $21     tomar el byte high del primer n√∫mero
 	SBC $23     restarle el byte high del segundo, con carry
 	STA $25     almacenar el byte high del resultado
 
-	... si el segundo n˙mero es mayor que el primero el carry quedar· 
+	... si el segundo n√∫mero es mayor que el primero el carry quedar√° 
 seteado.
                
-Las instrucciones aritmÈticas tambiÈn afectan las banderas N, Z y V:
+Las instrucciones aritm√©ticas tambi√©n afectan las banderas N, Z y V:
    
 	Z = 1  si el resultado fue $00, 0 si fue otro valor
 	N = 1  si el bit 7 del resultado es 1, 0 si fue otro valor
-	V = 1  si cambiÛ el bit 7 del acumulador, un cambio de signo
+	V = 1  si cambi√≥ el bit 7 del acumulador, un cambio de signo
 
 
 * Instruciones de incremento y decremento
@@ -478,9 +478,9 @@ Las instrucciones aritmÈticas tambiÈn afectan las banderas N, Z y V:
 	DEY  - DEcrementar Y en uno
 
 El 6502 tiene instrucciones para incrementar/decrementar los registros 
-Ìndices (X e Y) y valores en memoria. No hay instrucciones de este tipo 
-para el acumulador. El 65C02 incluÌa las instrucciones INA y DEA. Las 
-instrucciones para los registros Ìndices son en modo impicado por razones 
+√≠ndices (X e Y) y valores en memoria. No hay instrucciones de este tipo 
+para el acumulador. El 65C02 inclu√≠a las instrucciones INA y DEA. Las 
+instrucciones para los registros √≠ndices son en modo impicado por razones 
 obvias, mientras que INC y DEC utilizan los modos de direccionamiento.
    
 Todas las instrucciones de inc/dec alteran las banderas del processor 
@@ -490,7 +490,7 @@ status:
 	N = 1  si el bit 7 del resultado es 1, 0 si fue otro valor
      
       
-* Instruciones lÛgicas
+* Instruciones l√≥gicas
   --------------------
    
 	AND  - AND entre valor en memoria y el acumulador
@@ -501,20 +501,20 @@ Estas instrucciones ya se describieron anteriormente. Setean la bandera Z
 si el resultado es 0 y la N si el bit 7 del resultado es 1.
 
 
-* Instrucciones Jump (salto), Branch (bifurcaciÛn), Compare (comparaciÛn) 
+* Instrucciones Jump (salto), Branch (bifurcaci√≥n), Compare (comparaci√≥n) 
 y Test Bits (pruebas de bits)
   ----------------------------------------------------------
    
-	JMP  - Saltar a otra direcciÛn (GOTO)
+	JMP  - Saltar a otra direcci√≥n (GOTO)
 
-	BCC  - bifurcar si el carry est· en reset,	       	C = 0
-	BCS  - bifurcar si el carry est· en set,	       	C = 1
+	BCC  - bifurcar si el carry est√° en reset,	       	C = 0
+	BCS  - bifurcar si el carry est√° en set,	       	C = 1
 	BEQ  - bifurcar si el resultado es 0,			Z = 1 
 	BNE  - bifurcar si el resultado no es 0,		Z = 0
 	BMI  - bifurcar si el resultado es negativo,		N = 1
 	BPL  - bifurcar si el resultado es positivo,		N = 0
-	BVS  - bifurcar si overflow est· en set,		V = 1
-	BVC  - bifurcar si overflow est· en reset,		V = 0
+	BVS  - bifurcar si overflow est√° en set,		V = 1
+	BVC  - bifurcar si overflow est√° en reset,		V = 0
 
 	CMP  - Comparar memoria con acumulador
 	CPX  - Comparar memoria con X
@@ -525,17 +525,17 @@ y Test Bits (pruebas de bits)
 Todas estas instrucciones alteran el flujo de un programa o realizan 
 comparaciones de valores o bits.
  
-JMP simplemente sit˙a el contador de programa (PC) en una direcciÛn dada.  
-La prÛxima instrucciÛn ser· la que se encuentre en esa nueva direcciÛn.  
-Las instrucciones de ramificaciÛn son saltos relativos (JMP relativo).  
-Causan una ramificaciÛn o bifurcaciÛn a una nueva direcciÛn que puede ser 
-127 bytes m·s delante de la posiciÛn actual del PC o 128 hacia atr·s. Un 
-bloque de cÛdigo que sÛlo utilice instrucciones de ramificaciÛn puede ser 
+JMP simplemente sit√∫a el contador de programa (PC) en una direcci√≥n dada.  
+La pr√≥xima instrucci√≥n ser√° la que se encuentre en esa nueva direcci√≥n.  
+Las instrucciones de ramificaci√≥n son saltos relativos (JMP relativo).  
+Causan una ramificaci√≥n o bifurcaci√≥n a una nueva direcci√≥n que puede ser 
+127 bytes m√°s delante de la posici√≥n actual del PC o 128 hacia atr√°s. Un 
+bloque de c√≥digo que s√≥lo utilice instrucciones de ramificaci√≥n puede ser 
 relocalizado y ejecutado en cualquier lugar de la memoria porque utiliza 
 direcciones relativas y no absolutas.
    
-Las tres instrucciones de comparaciÛn se usan para setear bits del 
-processor status. La relaciÛn entre los valores comparados y los bits de 
+Las tres instrucciones de comparaci√≥n se usan para setear bits del 
+processor status. La relaci√≥n entre los valores comparados y los bits de 
 status es, 
    
           +-------------------------+---------------------+
@@ -547,26 +547,26 @@ status es,
           +-----------------------------------------------+
           
           
-La instrucciÛn BIT prueba los bits en memoria con el acumulador pero no 
-cambia ninguno. El contenido de la direcciÛn se multiplica logicamente 
-con el acumulador (AND), entonces se setean los bits de status seg˙n lo 
+La instrucci√≥n BIT prueba los bits en memoria con el acumulador pero no 
+cambia ninguno. El contenido de la direcci√≥n se multiplica logicamente 
+con el acumulador (AND), entonces se setean los bits de status seg√∫n lo 
 siguiente,
    
 * N recibe el valor inicial sin multiplicar del bit 7 de la memoria 
 * V recibe el valor inicial sin multiplicar del bit 6 de la memoria 
-* Z se setea si el resultado de la multiplicaciÛn (AND) es cero, se 
+* Z se setea si el resultado de la multiplicaci√≥n (AND) es cero, se 
 resetea con otro resultado.
    
-Entonces, si la direcciÛn $23 contenÌa $7F y el acumulador $80, una 
-instrucciÛn BIT $23 setearÌa las banderas V y Z y resetearÌa la N ya que 
+Entonces, si la direcci√≥n $23 conten√≠a $7F y el acumulador $80, una 
+instrucci√≥n BIT $23 setear√≠a las banderas V y Z y resetear√≠a la N ya que 
 el bit 7 de $7F es 0, el bit 6 de $7F es 1, y $7F AND $80 = 0.
 
 
-* Instrucciones de desplazamiento y rotaciÛn
+* Instrucciones de desplazamiento y rotaci√≥n
   ------------------------------------------
    
 	ASL  - Desplazar hacia izquierda el acumulator
-	LSR  - Desplazamiento lÛgico hacia derecha
+	LSR  - Desplazamiento l√≥gico hacia derecha
 	ROL  - Rotar hacia izquierda
 	ROR  - Rotar hacia derecha
    
@@ -591,7 +591,7 @@ memoria. El efecto es el siguiente (C es la bandera carry):
            +-+-+-+-+-+-+-+-+
 
 Como antes, Z se setea si el resultado es cero y N si el bit 7 es 1. N 
-siempre se resetea en una operaciÛn LSR. TambiÈn hay que notar que ASL A 
+siempre se resetea en una operaci√≥n LSR. Tambi√©n hay que notar que ASL A 
 es lo mismo que multiplicar por dos y LSR es lo mismo que dividir por 
 dos.
 
@@ -604,7 +604,7 @@ dos.
 	TXA  - Transferir X al acumulator
 	TYA  - Transferir Y al acumulator
     
-Estas instrucciones mueven valores entre los registros del 6502. TambiÈn 
+Estas instrucciones mueven valores entre los registros del 6502. Tambi√©n 
 son afectadas las banderas Z y N. Por ejemplo:
     
     LDA #$80
@@ -630,9 +630,9 @@ Provoca que Z se setee ya que el valor es cero.
 	PLA  - Extraer al acumulador desde el stack
 	PLP  - Extraer al processor status desde el stack
     
-TSX y TXS hacen posible la manipulaciÛn del stack. Las instrucciones push 
-y pull (las cuatro restantes) son ˙tiles para guardar valores de los 
-registros y banderas de estados. Su utilizaciÛn es directa.
+TSX y TXS hacen posible la manipulaci√≥n del stack. Las instrucciones push 
+y pull (las cuatro restantes) son √∫tiles para guardar valores de los 
+registros y banderas de estados. Su utilizaci√≥n es directa.
 
 
 * Instrucciones de subrutinas
@@ -640,26 +640,26 @@ registros y banderas de estados. Su utilizaciÛn es directa.
 
 	JSR  - Saltar a una subrutina
 	RTS  - Regresar desde una subrutina
-	RTI  - Regresar desde una interrupciÛn
+	RTI  - Regresar desde una interrupci√≥n
 
-Tal como JMP, JSR causa que el programa contin˙e su ejecuciÛn desde la 
-instrucciÛn almacenada en la direcciÛn dada. A diferencia de JMP, JSR 
-utiliza el stack para almacenar la direcciÛn a dÛnde retornar. Cuando se 
-ejecuta una instrucciÛn RTS, la direcciÛn previamente empujada al stack 
-se extrae y el programa contin˙a a partir de esa direcciÛn. Por ejemplo,
+Tal como JMP, JSR causa que el programa contin√∫e su ejecuci√≥n desde la 
+instrucci√≥n almacenada en la direcci√≥n dada. A diferencia de JMP, JSR 
+utiliza el stack para almacenar la direcci√≥n a d√≥nde retornar. Cuando se 
+ejecuta una instrucci√≥n RTS, la direcci√≥n previamente empujada al stack 
+se extrae y el programa contin√∫a a partir de esa direcci√≥n. Por ejemplo,
     
 	LDA #$C1   ; cargar caracter 'A'
-	JSR print  ; imprimir el car·cter y su cÛdigo en hexadecimal
+	JSR print  ; imprimir el car√°cter y su c√≥digo en hexadecimal
 	LDA #$C2   ; cargar 'B'
 	JSR print  ; e imprimirlo
 	.
 	.
 	.
 print	JSR $FDED  ; imprimir la letra
-	JSR $FDDA  ; y su cÛdigo ASCII
+	JSR $FDDA  ; y su c√≥digo ASCII
 	RTS        ; regresar a la llamada
     
-RTI es como RTS y debe ser usada al final de una rutina de interrupciÛn.
+RTI es como RTS y debe ser usada al final de una rutina de interrupci√≥n.
 
 
 * Instrucciones de seteo y reseteo (limpiar)
@@ -667,33 +667,33 @@ RTI es como RTS y debe ser usada al final de una rutina de interrupciÛn.
 
 	CLC  - resetear (limpiar) bandera carry
 	CLD  - resetear modo decimal
-	CLI  - resetear deactivaciÛn de interrupciÛn
+	CLI  - resetear deactivaci√≥n de interrupci√≥n
 	CLV  - resetear banera de overflow (desbordamiento)
 
 	SEC  - setear carry
 	SED  - setear modo decimal
-	SEI  - setear desactivaciÛn de interrupciÛn
+	SEI  - setear desactivaci√≥n de interrupci√≥n
     
 Estas son instrucciones de un solo byte y sirven para configurar las 
 banderas del processor status.
     
 CLC y SEC son muy usadas en la suma y la resta respectivamente. Antes de 
 cualquier suma (ADC) se usa CLC para limpiar el carry o el resultado 
-podrÌa ser mayor en una unidad. Para la resta (SBC) se usa SEC para 
-asegurarse que el carry est· seteado. En restas o sumas multi-byte solo 
-se setea o resetea el carry una vez antes de la primera instrucciÛn. Por 
-ejemplo, para sumar un uno a un n˙mero de 16 bits en $23 y $24 hay que 
+podr√≠a ser mayor en una unidad. Para la resta (SBC) se usa SEC para 
+asegurarse que el carry est√° seteado. En restas o sumas multi-byte solo 
+se setea o resetea el carry una vez antes de la primera instrucci√≥n. Por 
+ejemplo, para sumar un uno a un n√∫mero de 16 bits en $23 y $24 hay que 
 hacer lo siguiente:
     
 	LDA $23     ; cargar el byte low
 	CLC         ; resetear el carry
-	ADC #$02    ; sumar el n˙mero 2,
+	ADC #$02    ; sumar el n√∫mero 2,
 		    ; el carry se setea si resultado > 255
 	STA $23     ; guardar el byte low
 	LDA $24     ; cargar el byte high
 	ADC #$00    ; sumar cero y el resultado anterior del carry
 	STA $24     ; guardar el byte high
-	RTS         ; si el carry est· en set el resultado fue > 65535
+	RTS         ; si el carry est√° en set el resultado fue > 65535
     
 Lo mismo para la resta,
     
@@ -704,28 +704,28 @@ Lo mismo para la resta,
 	LDA $24     ; cargar el byte high
 	SBC #$00    ; restar cero y el resultado del carry anterior
 	STA $24     ; guardar el byte high
-	RTS         ; si el carry no est· seteado el resultado fue < 0
+	RTS         ; si el carry no est√° seteado el resultado fue < 0
 
 
 * Otras Instrucciones
   -------------------
     
-	NOP  - Ninguna OperaciÛn
+	NOP  - Ninguna Operaci√≥n
 	BRK  - Corte de programa
     
-NOP no realiza ninguna operaciÛn pero utiliza ciclos de procesador. Es 
-˙til para borrar viejas instrucciones, reservar espacio para futuras 
-instrucciones o para ciertos conteos de ciclos de m·quina (cycle 
+NOP no realiza ninguna operaci√≥n pero utiliza ciclos de procesador. Es 
+√∫til para borrar viejas instrucciones, reservar espacio para futuras 
+instrucciones o para ciertos conteos de ciclos de m√°quina (cycle 
 counting) ya que utiliza 2 ciclos.
     
 BRK causa un corte forzado y obliga al procesador a comenzar desde el 
-comienzo (esta direcciÛn debe indicarse en la direcciÛn $FFFE y $FFFF.
+comienzo (esta direcci√≥n debe indicarse en la direcci√≥n $FFFE y $FFFF.
 
 
-** Ejemplos simples de programaciÛn
+** Ejemplos simples de programaci√≥n
    --------------------------------
 
-AquÌ se ilustrar·n algunas de las tÈcnicas m·s usadas en programaciÛn.  
+Aqu√≠ se ilustrar√°n algunas de las t√©cnicas m√°s usadas en programaci√≥n.  
 Al final hay ejemplos de sumas y restas.
     
 
@@ -733,7 +733,7 @@ Al final hay ejemplos de sumas y restas.
   ---------------------------
     
             ; 
-            ; cuenta regresiva de un n˙mero de 8 bits
+            ; cuenta regresiva de un n√∫mero de 8 bits
             ;
             
             start LDX #$FF    ; cargar X con $FF = 255
@@ -741,15 +741,15 @@ Al final hay ejemplos de sumas y restas.
                   BNE loop    ; si X no es cero, volver a loop
                   RTS         ; regresar
                   
-            (start y loop son etiquetas, podrÌan tener otro nombre)            
+            (start y loop son etiquetas, podr√≠an tener otro nombre)            
 
 
-            La instrucciÛn BNE no ìsabeî si X llega a cero. Lo que hace
-            es analizar la bandera Z del procesador, que estar· seteada
+            La instrucci√≥n BNE no ‚Äúsabe‚Äù si X llega a cero. Lo que hace
+            es analizar la bandera Z del procesador, que estar√° seteada
             cuando X llegue a cero.
                   
             ;
-            ; cuenta regresiva de un n˙mero de 16 bits
+            ; cuenta regresiva de un n√∫mero de 16 bits
             ;
             
             start LDY #$FF    ; cargar Y con $FF
@@ -760,7 +760,7 @@ Al final hay ejemplos de sumas y restas.
                   BNE loop1   ; si Y no es cero, volver a loop1
                   RTS         ; regresar
                   
-            AquÌ tenemos dos ciclos, X se carga con 255 y cuenta hasta 
+            Aqu√≠ tenemos dos ciclos, X se carga con 255 y cuenta hasta 
             cero cada vez que Y se decrementa. El resultado es una cuenta 
             regresiva desde $FFFF = 65535 hasta $0000.
 
@@ -773,42 +773,42 @@ Nota: los siguientes ejemplos pertenecen al libro "6502 Software Design"
            ; Ejemplo 4-2. Borrar un elemento de una lista desordenada
            ;
            ; Borrar el contenido de $2F de una lista que comienza
-           ; en la direcciÛn $30 y $31. El primer byte de la lista
-           ; es su tamaÒo.
+           ; en la direcci√≥n $30 y $31. El primer byte de la lista
+           ; es su tama√±o.
            ;
            
 
-           deluel  LDY #$00  	; Ìndice para la siguiente operaciÛn
+           deluel  LDY #$00  	; √≠ndice para la siguiente operaci√≥n
                    LDA ($30),Y
-                   TAX          ; transferir el tamaÒo de la lista a X
+                   TAX          ; transferir el tama√±o de la lista a X
                    LDA $2F      ; elemento a borrar
-           nextel  INY          ; Ìndice al siguiente elemento
+           nextel  INY          ; √≠ndice al siguiente elemento
                    CMP ($30),Y  ; coincide el elemento con el de la                
                                 ; lista?
                    BEQ delete   ; si. Borrar elemento
                    DEX          ; no. Decrementar el contador
-                   BNE nextel   ; hay m·s elementos para comparar?
-                   RTS          ; no. El elemento no est· en la lista.  
+                   BNE nextel   ; hay m√°s elementos para comparar?
+                   RTS          ; no. El elemento no est√° en la lista.  
                                 ; Regresar
                    
-           ; borrar el elemento moviendo los siguientes a la posiciÛn 
+           ; borrar el elemento moviendo los siguientes a la posici√≥n 
            ; anterior
            
            delete  DEX          ; decrementar contador
                    BEQ deccnt   ; fin de lista?
                    INY          ; no. Mover el siguiente elemento hacia 
-                                ; atr·s
+                                ; atr√°s
                    LDA ($30),Y
                    DEY
                    STA ($30),Y
                    INY
                    JMP delete
-           deccnt  LDA ($30,X)  ; actualizar el tamaÒo de la lista
+           deccnt  LDA ($30,X)  ; actualizar el tama√±o de la lista
                    SBC #$01
                    STA ($30,X)
                    RTS
 
-           ; Ejemplo 5-6. MultiplicaciÛn de dos n˙meros de 16 bits sin 
+           ; Ejemplo 5-6. Multiplicaci√≥n de dos n√∫meros de 16 bits sin 
            ; signo
            ;
            ; Multiplicar $22 (low) y $23 (high) por $20 (low) y
@@ -841,18 +841,18 @@ Nota: los siguientes ejemplos pertenecen al libro "6502 Software Design"
                                 ; los 16 bits
                    RTS
 
-           ; Ejemplo 5-14.  RaÌz cuadrada de 16 bits.
+           ; Ejemplo 5-14.  Ra√≠z cuadrada de 16 bits.
            ;
-           ; Escribir la raÌz cuadrada de 8 bits en $20 de un
-           ; n˙mero de 16 bits en $20 (low) y $21 (high). El
+           ; Escribir la ra√≠z cuadrada de 8 bits en $20 de un
+           ; n√∫mero de 16 bits en $20 (low) y $21 (high). El
            ; resto sigue en $21.
            
            sqrt16  LDY #$01     ; byte menos significativo del primer 
-                                ; n˙mero impar =1
+                                ; n√∫mero impar =1
                    STY $22
                    DEY
-                   STY $23      ; byte m·s significativo del primer 
-                                ; n˙mero impar (raÌz = 0)
+                   STY $23      ; byte m√°s significativo del primer 
+                                ; n√∫mero impar (ra√≠z = 0)
            again   SEC
                    LDA $20      ; guardar el resto en X
                    TAX          ; restar el impar del entero
@@ -863,22 +863,22 @@ Nota: los siguientes ejemplos pertenecen al libro "6502 Software Design"
                                 ; (la parte high)
                    SBC $23
                    STA $21      ; resultado negativo?
-                   BCC nomore   ; no. incrementar raÌz cuadrada
+                   BCC nomore   ; no. incrementar ra√≠z cuadrada
                    INY
-                   LDA $22      ; calcular prÛximo impar
+                   LDA $22      ; calcular pr√≥ximo impar
                    ADC #$01
                    STA $22
                    BCC again
                    INC $23
                    JMP again
-            nomore STY $20      ; listo, guardar raÌz cuadrada
+            nomore STY $20      ; listo, guardar ra√≠z cuadrada
                    STX $21      ; y el resto
                    RTS
          
 
-Esto se basa en la observaciÛn de que la raÌz cuadrada de un entero es 
-igual al n˙mero de veces que un n˙mero impar increment·ndose puede ser 
-restado del n˙mero original manteniendo resto positivo. Por ejemplo,
+Esto se basa en la observaci√≥n de que la ra√≠z cuadrada de un entero es 
+igual al n√∫mero de veces que un n√∫mero impar increment√°ndose puede ser 
+restado del n√∫mero original manteniendo resto positivo. Por ejemplo,
            
                    25
                  -  1         1
@@ -893,18 +893,18 @@ restado del n˙mero original manteniendo resto positivo. Por ejemplo,
                  -  7         4
                    --
                     9
-                 -  9         5 = raÌz cuadrada de 25
+                 -  9         5 = ra√≠z cuadrada de 25
                    --
                     0
 
 
-Si est·s interesado en aprander m·s, busca un libro sobre lenguaje de 
-m·quina para computadoras Apple.
+Si est√°s interesado en aprander m√°s, busca un libro sobre lenguaje de 
+m√°quina para computadoras Apple.
 Nota del autor de este documento: Si la biblioteca de tu lugar es como la 
-mÌa, habr· muchos libros de computaciÛn de los í80 en los estantes.
-Nota del traductor: Si la biblioteca de tu lugar es como la mÌa, no 
-encontrar·s nada :)
+m√≠a, habr√° muchos libros de computaci√≥n de los ‚Äô80 en los estantes.
+Nota del traductor: Si la biblioteca de tu lugar es como la m√≠a, no 
+encontrar√°s nada :)
 
-TraducciÛn por Gonzalo R. Fern·ndez
-Email: horcas@bbs.frc.utn.edu.ar
-2001. CÛrdoba, Argentina.
+Traducci√≥n por Gonzalo R. Fern√°ndez
+Email: gonzalorf@gmail.com
+2001. C√≥rdoba, Argentina.
