@@ -3,9 +3,10 @@
 ### How to test it
 Clone repository on Windows.
 Execute compile.bat, it will regenerate plane.bin file, wich is the ROM of the game. This can be burned in a real eeprom cartridge or used with an emulator.
+
 Execute run.bat to launch the game on Stella emulator.
 
-Assembler and emulator are included in the repository.
+DASM Assembler and Stella emulator are included in the repository.
 
 
 ### Screenshots showing progress
