@@ -1,11 +1,16 @@
 # Plane: an Atari 2600 game
 
 ### Hardware limitations and "features"
-Screen resolution 160 x 192 pixels
-128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...)
-4 kb of ROM space
-No video memory. You need to draw every pixel, line by line, frame by frame, acording to the TV electron beam position.
+Screen resolution of 160 x 192 pixels.
+
+128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...).
+
+4 kb of ROM space for the game program.
+
+No video memory. You need to draw every pixel, line by line, frame by frame, according to the TV electron beam position.
+
 Super challenging programming skills are required, making smart use of every CPU cycle in the right moment.
+
 Only 2 sprites, 8 pixels wide. 2 missiles, 1 pixel wide each, and a 1 pixel wide "ball". That, and a low (even lower) resolution background is all you have to make a game.
 
 
