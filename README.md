@@ -1,6 +1,8 @@
 # Plane: an Atari 2600 game
 
 ### Hardware limitations and "features"
+Programming language: assembly for the 6502 microprocessor. In practice, the microprocessor was a 6507 (a cheaper version of the 6502, just for the console).
+
 Screen resolution of 160 x 192 pixels.
 
 128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...). To make matters worse, RAM space is shared between user variables and the stack.
