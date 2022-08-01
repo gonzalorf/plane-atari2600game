@@ -3,19 +3,17 @@
 ### Hardware limitations and "features"
 Programming language: assembly for the 6502 microprocessor. In practice, the microprocessor was a 6507 (a cheaper version of the 6502, just for the console).
 
-Screen resolution of 160 x 192 pixels.
+Screen resolution: 160 x 192 pixels. You can't use all those pixels at the same time. Only 2 sprites 8 pixels wide, 2 missiles 1 pixel wide each, and a 1 pixel wide "ball". That, and a low (even lower) resolution background is all you have to make a game.
 
 128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...). To make matters worse, RAM space is shared between user variables and the stack.
 The variables use the beginning of the RAM, and the stack the end, and care must be taken that they do not overlap.
 Yes, you have to take the stack into account when doing calculations, subroutine calls, etc.
 
-4 kb of ROM space for the game program.
-
 No video memory. You need to draw every pixel, line by line, frame by frame, according to the TV electron beam position.
 
-Super challenging programming skills are required, making smart use of every CPU cycle in the right moment.
+4 kb of ROM space for the game program.
 
-Only 2 sprites, 8 pixels wide. 2 missiles, 1 pixel wide each, and a 1 pixel wide "ball". That, and a low (even lower) resolution background is all you have to make a game.
+Super challenging programming skills are required, making smart use of every CPU cycle in the right moment.
 
 
 ### How to test it
