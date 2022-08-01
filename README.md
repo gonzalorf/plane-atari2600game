@@ -3,7 +3,9 @@
 ### Hardware limitations and "features"
 Screen resolution of 160 x 192 pixels.
 
-128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...).
+128 bytes of RAM (just 128, not 128 Kb nor 128 Mb...). To make matters worse, RAM space is shared between user variables and the stack.
+The variables use the beginning of the RAM, and the stack the end, and care must be taken that they do not overlap.
+Yes, you have to take the stack into account when doing calculations, subroutine calls, etc.
 
 4 kb of ROM space for the game program.
 
